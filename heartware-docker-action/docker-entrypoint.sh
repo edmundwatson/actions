@@ -2,13 +2,13 @@
 
 set -e
 lsb_release -a
-cd /jenkins/workspace/BIO-X/HeartWare
+cd /github/workspace
 git clean -xdf && git submodule foreach git clean -xdf
 
-rm -rf /jenkins/workspace/BIO-X/build-HeartWare2
-mkdir -p /jenkins/workspace/BIO-X/build-HeartWare2
-cd /jenkins/workspace/BIO-X/build-HeartWare2
+rm -rf /github/build-HeartWare
+mkdir -p /github/build-HeartWare
+cd /github/build-HeartWare
 
-/opt/qt5/bin/qmake /jenkins/workspace/BIO-X/HeartWare
+/opt/qt5/bin/qmake  /github/workspace
 make -j $(nproc)
 QT_QPA_PLATFORM=offscreen make check -k -j1
